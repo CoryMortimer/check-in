@@ -4,8 +4,9 @@ import useSWR from 'swr';
 
 const ProtectedRoute = ({ component: Component, ...props }) => {
   const { data, error } = useSWR('/groups');
+  console.log('GROUPS ROUTE ERROR', !!error)
 
-  if (!data) {
+  if (!data && !error) {
     return (<h1>loading...</h1>);
   } else {
     return (
