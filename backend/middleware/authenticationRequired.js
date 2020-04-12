@@ -12,6 +12,10 @@ const authenticationRequired = (req, res, next) => {
           return res.json({error: 'Unauthorized'});
         }
       })
+      .catch(() => {
+        res.status(401);
+        return res.json({error: 'Unauthorized'});
+      });
   }
   res.status(401);
   return res.json({error: 'Unauthorized'});
