@@ -98,7 +98,8 @@ const createEmails = (requestsWithUsers) => {
           checkInTemplate(
             requestsWithUser.group_name,
             usersInGroups[requestsWithUser.group_id].join(', '),
-            requestsWithUser.time_close.toString()
+            requestsWithUser.time_close.toString(),
+            `${requestsWithUser.group_id}@${process.env.SENDGRID_REPLY_TO_DOMAIN}`,
           ),
           { userId: requestsWithUser.user_id, requestForPostId: requestsWithUser.request_for_post_id }
         )
