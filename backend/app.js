@@ -12,6 +12,7 @@ const requestForPostsRouter = require('./routes/requestForPosts');
 const groupsRouter = require('./routes/groups');
 const sessionRouter = require("./routes/session");
 const postsRouter = require("./routes/posts");
+const sendGridRouter = require("./routes/sendGrid");
 
 const app = express();
 
@@ -28,5 +29,6 @@ app.use('/groups', authenticationRequired, groupsRouter);
 app.use('/request-for-posts', authenticationRequired, requestForPostsRouter);
 app.use('/posts', authenticationRequired, postsRouter);
 app.use("/session", sessionRouter);
+app.use("/send-grid", sendGridRouter);
 
 module.exports = app;

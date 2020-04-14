@@ -37,7 +37,7 @@ const usersToSendEmailsTo = (requestsWithUsers) => {
   const promises = requestsWithUsers.map((requestsWithUser) => {
     const userId = requestsWithUser.user_id
     const requestForPostId = requestsWithUser.request_for_post_id
-    return hasAnySentEmails(userId, requestForPostId)
+    return hasAnySentEmails({ userId, requestForPostId })
       .then((hasSentEmails) => {
         if (hasSentEmails) {
           return hasUndeliverableEmails({ userId, requestForPostId })
@@ -76,17 +76,20 @@ const getUsersInGroup = (requestsWithUsers) => {
   return Promise.all(promises).then(() => uniqueGroupIds);
 };
 
-const createEmailPayload = (to, html) => {
+const createEmailPayload = (to, html, { userId, requestForPostId }) => {
   return {
     to,
     from: process.env.SENDGRID_FROM_EMAIL,
     subject: 'Time to Check In',
     html,
+    custom_args: {
+      userId,
+      requestForPostId,
+    },
   };
 };
 
 const createEmails = (requestsWithUsers) => {
-// checkInTemplate(groupName, listOfEmails, closingDate)
   return getUsersInGroup(requestsWithUsers)
     .then((usersInGroups) => {
       return requestsWithUsers.map((requestsWithUser) => {
@@ -96,7 +99,8 @@ const createEmails = (requestsWithUsers) => {
             requestsWithUser.group_name,
             usersInGroups[requestsWithUser.group_id].join(', '),
             requestsWithUser.time_close.toString()
-          )
+          ),
+          { userId: requestsWithUser.user_id, requestForPostId: requestsWithUser.request_for_post_id }
         )
       });
     });
