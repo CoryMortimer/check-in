@@ -4,14 +4,14 @@ import Router from './components/Router';
 import CssBaseline from '@material-ui/core/CssBaseline';
 // import * as serviceWorker from './serviceWorker';
 import { SWRConfig } from 'swr';
-import axios from 'axios';
+import httpRequest from './utils/httpRequest';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <SWRConfig
       value={{
-        fetcher: (...args) => axios.get(...args).then(res => res.data)
+        fetcher: (...args) => httpRequest.get(...args).then(res => res.data)
       }}
     >
       <CssBaseline />

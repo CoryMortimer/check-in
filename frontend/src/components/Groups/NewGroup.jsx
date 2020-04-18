@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '../ui/Grid';
 import EditableMembersList from '../Members/EditableMembersList';
-import axios from 'axios';
+import httpRequest from '../../utils/httpRequest';
 
 const NewGroup = () => {
   const [groupName, setGroupName] = useState('My New Group');
@@ -63,7 +63,7 @@ const NewGroup = () => {
           color="primary"
           variant="contained"
           onClick={() => {
-            axios.post('/groups', { name: groupName, members })
+            httpRequest.post('/groups', { name: groupName, members })
           }}
         >
           Create Group

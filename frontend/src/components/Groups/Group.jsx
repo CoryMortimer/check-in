@@ -6,8 +6,7 @@ import Grid from '../ui/Grid';
 import MembersList from '../Members/MembersList';
 import PostsList from '../Posts/PostsList';
 import CreatePost from '../Posts/CreatePost';
-import axios from 'axios';
-import useSWR from 'swr';
+import httpRequest from '../../utils/httpRequest';
 
 const Group = () => {
   const { groupId } = useParams();
@@ -37,7 +36,7 @@ const Group = () => {
           fullWidth
           variant="contained"
           color="secondary"
-          onClick={() => axios.delete(`/groups/${groupId}`)}
+          onClick={() => httpRequest.delete(`/groups/${groupId}`)}
           >
             Delete Group
           </Button>

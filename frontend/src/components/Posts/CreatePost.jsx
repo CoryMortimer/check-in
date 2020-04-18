@@ -3,7 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '../ui/Grid';
-import axios from 'axios';
+import httpRequest from '../../utils/httpRequest';
 import useSWR from 'swr';
 
 const CreatePost = ({ groupId }) => {
@@ -26,7 +26,7 @@ const CreatePost = ({ groupId }) => {
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        const requestMethod = userPost.message !== undefined ? axios.put : axios.post;
+        const requestMethod = userPost.message !== undefined ? httpRequest.put : httpRequest.post;
         requestMethod(`/request-for-posts/${requestForPost.id}/post`, {message: event.target.post.value});
       }}
     >
