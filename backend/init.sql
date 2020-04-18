@@ -42,10 +42,12 @@ CREATE TABLE request_for_posts (
   group_id UUID REFERENCES groups(id),
   time_open TIMESTAMP,
   time_close TIMESTAMP,
+  sent_newsletter BOOL DEFAULT FALSE,
   archived BOOL DEFAULT FALSE,
   created_at timestamp default current_timestamp
 );
 CREATE UNIQUE INDEX group_id_for_r_f_p_idx ON request_for_posts (group_id);
+CREATE INDEX sent_newsletter_for_r_f_p_idx ON request_for_posts (sent_newsletter);
 
 CREATE TABLE posts (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
