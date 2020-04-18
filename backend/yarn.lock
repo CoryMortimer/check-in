@@ -107,6 +107,11 @@ axios@^0.19.2:
   dependencies:
     follow-redirects "1.5.10"
 
+azure-function-express@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/azure-function-express/-/azure-function-express-2.0.0.tgz#11da654fb90c0b3a5bd01ecbddc19fc616231ec8"
+  integrity sha512-e+IT8pZn9+JEUns497uf3NptlIQ8xTZWPDHz0/JLMNBFL/KwQ6ojOS1kWSQiah2NSLIB9O/n+wTkygYtS8Y++A==
+
 base64url@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/base64url/-/base64url-3.0.1.tgz#6399d572e2bc3f90a9a8b22d5dbb0a32d33f788d"

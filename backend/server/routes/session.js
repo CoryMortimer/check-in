@@ -17,7 +17,7 @@ const clientPromise = Issuer.discover("https://did.app").then((issuer) => {
 });
 
 router.get("/authenticate", handleRejection((req, res, next) => {
-  clientPromise.then((client) => {
+  return clientPromise.then((client) => {
     const authorizationUrl = client.authorizationUrl({
       scope: "openid",
       redirect_uri: `${SERVER_DOMAIN}/session/callback`

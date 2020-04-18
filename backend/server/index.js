@@ -3,7 +3,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cookieSession = require('cookie-session');
-const { SESSION_SECRET } = process.env;
+const { SESSION_SECRET, IS_AZURE_FUNCTION } = process.env;
+const createHandler = require("azure-function-express").createHandler;
 const authenticationRequired = require('./middleware/authenticationRequired');
 const multer  = require('multer');
 const upload = multer();
@@ -26,13 +27,19 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieSession({ name: 'checkIn', secret: SESSION_SECRET }));
 
-app.use('/', indexRouter);
-app.use('/users', authenticationRequired, usersRouter);
-app.use('/groups', authenticationRequired, groupsRouter);
-app.use('/request-for-posts', authenticationRequired, requestForPostsRouter);
-app.use('/posts', authenticationRequired, postsRouter);
-app.use("/session", sessionRouter);
-app.use("/send-grid", sendGridRouter);
-app.use("/process-email", upload.array(), processEmailRouter);
+app.use('/api/', indexRouter);
+app.use('/api/users', authenticationRequired, usersRouter);
+app.use('/api/groups', authenticationRequired, groupsRouter);
+app.use('/api/request-for-posts', authenticationRequired, requestForPostsRouter);
+app.use('/api/posts', authenticationRequired, postsRouter);
+app.use("/api/session", sessionRouter);
+app.use("/api/send-grid", sendGridRouter);
+app.use("/api/process-email", upload.array(), processEmailRouter);
 
-module.exports = app;
+let server = app
+
+if (IS_AZURE_FUNCTION === 'true') {
+  server = createHandler(app);
+}
+
+module.exports = server;
