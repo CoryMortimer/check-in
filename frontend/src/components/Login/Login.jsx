@@ -9,7 +9,7 @@ const Login = () => (
       <Typography variant="h4">Login or Signup</Typography>
     </Grid>
     <Grid item xs={12} align="center">
-      <Button href="http://localhost:3000/session/authenticate">Start Here</Button>
+      <Button href={`${process.env.REACT_APP_SERVER_DOMAIN}/session/authenticate`}>Start Here</Button>
     </Grid>
   </Grid>
 );

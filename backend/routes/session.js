@@ -4,6 +4,7 @@ const { Issuer } = require("openid-client");
 const { createUser, getUserByEmail } = require('../resources/Users');
 const { createAuth } = require('../resources/EmailOnlyAuthIds');
 const handleRejection = require('../middleware/handleRejection');
+const { SERVER_DOMAIN } = process.env;
 
 const { CLIENT_ID, CLIENT_SECRET } = process.env;
 
@@ -19,7 +20,7 @@ router.get("/authenticate", handleRejection((req, res, next) => {
   clientPromise.then((client) => {
     const authorizationUrl = client.authorizationUrl({
       scope: "openid",
-      redirect_uri: "http://localhost:3000/session/callback"
+      redirect_uri: `${SERVER_DOMAIN}/session/callback`
     });
     res.redirect(authorizationUrl);
   });
@@ -29,7 +30,7 @@ router.get("/callback", handleRejection((req, res, next) => {
   return clientPromise
     .then((client) => {
       const params = client.callbackParams(req);
-      return client.callback("http://localhost:3000/session/callback", params);
+      return client.callback(`${SERVER_DOMAIN}/session/callback`, params);
     })
     .then((tokenSet) => {
       const claims = tokenSet.claims();
