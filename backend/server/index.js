@@ -3,11 +3,12 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cookieSession = require('cookie-session');
-const { SESSION_SECRET, IS_AZURE_FUNCTION } = process.env;
+const { SESSION_SECRET, IS_AZURE_FUNCTION, FRONT_END_DOMAIN } = process.env;
 const createHandler = require("azure-function-express").createHandler;
 const authenticationRequired = require('./middleware/authenticationRequired');
 const multer  = require('multer');
 const upload = multer();
+const cors = require('cors');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -20,6 +21,7 @@ const processEmailRouter = require("./routes/processEmail");
 
 const app = express();
 
+app.use(cors({ origin: FRONT_END_DOMAIN, credentials: true }));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

@@ -4,7 +4,7 @@ const { Issuer } = require("openid-client");
 const { createUser, getUserByEmail } = require('../resources/Users');
 const { createAuth } = require('../resources/EmailOnlyAuthIds');
 const handleRejection = require('../middleware/handleRejection');
-const { SERVER_DOMAIN } = process.env;
+const { FRONT_END_DOMAIN, SERVER_DOMAIN } = process.env;
 
 const { CLIENT_ID, CLIENT_SECRET } = process.env;
 
@@ -42,7 +42,7 @@ router.get("/callback", handleRejection((req, res, next) => {
         })
         .then(() => {
           req.session = { userId: claims.sub };
-          res.redirect("/");
+          res.redirect(FRONT_END_DOMAIN);
         });
     });
 }));
