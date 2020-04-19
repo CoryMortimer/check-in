@@ -10,7 +10,7 @@
     },
     {
       "type": "func",
-      "command": "host start",
+      "command": "host start --port 3000",
       "problemMatcher": "$func-watch",
       "isBackground": true,
       "dependsOn": "yarn",
@@ -21,7 +21,7 @@
     {
       "type": "shell",
       "label": "yarn",
-      "command": "nvm use && yarn",
+      "command": "yarn",
       "options": {
         "cwd": "${workspaceFolder}/backend"
       }

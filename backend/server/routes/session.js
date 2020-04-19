@@ -34,14 +34,13 @@ router.get("/callback", handleRejection((req, res, next) => {
     })
     .then((tokenSet) => {
       const claims = tokenSet.claims();
-      console.log(claims);
       return createUser({ email: claims.email })
         .then(() => getUserByEmail({ email: claims.email }))
         .then((user) => {
           return createAuth({userId: user.id, authId: claims.sub});
         })
         .then(() => {
-          req.session = { userId: claims.sub };
+          req.session.userId = claims.sub;
           res.redirect(FRONT_END_DOMAIN);
         });
     });
