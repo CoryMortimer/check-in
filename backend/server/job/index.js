@@ -114,10 +114,10 @@ const sendEmails = (requestsWithUsers) => {
 };
 
 const main = () => {
-  getAllOpenRequestsWithUsers()
+  return getAllOpenRequestsWithUsers()
     .then(usersToSendEmailsTo)
     .then(sendEmails)
     .catch((error) => console.log('error', error));
 };
 
-main();
+module.exports = main;

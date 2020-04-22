@@ -17,6 +17,7 @@ const sessionRouter = require("./routes/session");
 const postsRouter = require("./routes/posts");
 const sendGridRouter = require("./routes/sendGrid");
 const processEmailRouter = require("./routes/processEmail");
+const webHookRouter = require("./routes/webHook");
 
 const app = express();
 app.set('trust proxy', true);
@@ -41,6 +42,7 @@ app.use('/api/posts', authenticationRequired, postsRouter);
 app.use("/api/session", sessionRouter);
 app.use("/api/send-grid", sendGridRouter);
 app.use("/api/process-email", upload.array(), processEmailRouter);
+app.use("/api/web-hook", webHookRouter);
 
 let server = app
 
