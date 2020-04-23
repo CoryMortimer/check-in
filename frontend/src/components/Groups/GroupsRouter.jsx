@@ -8,6 +8,8 @@ import {
 import Groups from './Groups';
 import Group from './Group';
 import NewGroup from './NewGroup';
+import GroupsNavBar from '../ui/NavBars/GroupsNavBar';
+import TitleBar from '../ui/NavBars/TitleBar';
 
 const Router = () => {
   let { path } = useRouteMatch();
@@ -16,13 +18,19 @@ const Router = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path={path}>
-          <Groups />
+          <TitleBar>
+            <Groups />
+          </TitleBar>
         </Route>
         <Route path={`${path}/new`}>
-          <NewGroup />
+          <GroupsNavBar>
+            <NewGroup />
+          </GroupsNavBar>
         </Route>
         <Route path={`${path}/:groupId`}>
-          <Group />
+          <GroupsNavBar>
+            <Group />
+          </GroupsNavBar>
         </Route>
       </Switch>
     </BrowserRouter>

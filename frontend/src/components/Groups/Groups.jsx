@@ -27,7 +27,7 @@ const Groups = () => {
         <Typography variant="h4">Groups</Typography>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="h5">Request for Post</Typography>
+        <Typography variant="h5">Posting an update is open</Typography>
       </Grid>
       <Grid item xs={12}>
         <RequestForPostsList />

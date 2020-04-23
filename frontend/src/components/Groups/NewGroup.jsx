@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router-dom';
 import Grid from '../ui/Grid';
 import EditableMembersList from '../Members/EditableMembersList';
 import httpRequest from '../../utils/httpRequest';
@@ -10,6 +11,7 @@ const NewGroup = () => {
   const [groupName, setGroupName] = useState('My New Group');
   const [members, setMembers] = useState([]);
   const [emailField, setEmailField] = useState('');
+  const history = useHistory();
 
   return (
     <Grid container spacing={2}>
@@ -64,6 +66,7 @@ const NewGroup = () => {
           variant="contained"
           onClick={() => {
             httpRequest.post('/groups', { name: groupName, members })
+              .then(() => history.push('/groups'));
           }}
         >
           Create Group
