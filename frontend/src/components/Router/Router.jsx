@@ -7,7 +7,7 @@ import ProtectedRoute from './ProtectedRoute';
 import UnprotectedRoute from './UnprotectedRoute';
 
 const Router = () => (
-    <Container maxWidth="md">
+  <Container maxWidth="md">
     <BrowserRouter>
       <Switch>
         <ProtectedRoute path="/groups" component={GroupsRouter} />

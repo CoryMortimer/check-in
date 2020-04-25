@@ -11,9 +11,8 @@ const handleRejection = require('../middleware/handleRejection');
 
 router.get('/', handleRejection((req, res) => {
   const groupId = req.query.groupId;
-  console.log('groupId', groupId)
   if (groupId) {
-    return getOpenRequestForPost({ groupId })
+    return getOpenRequestForPost({ groupId, userId: req.authenticatedUser.id })
       .then((requestForPost) => {
         res.status(200);
         res.json({data: requestForPost});
@@ -30,7 +29,7 @@ router.get('/', handleRejection((req, res) => {
 router.post('/', handleRejection((req, res) => {
   const groupId = req.body.groupId;
   if (groupId) {
-    return getOpenRequestForPost({ groupId })
+    return getOpenRequestForPost({ groupId, userId: req.authenticatedUser.id })
       .then((requestForPost) => {
         if (requestForPost) {
           res.status(422);

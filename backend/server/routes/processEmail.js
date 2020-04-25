@@ -12,7 +12,7 @@ router.post('/', handleRejection((req, res) => {
     .then((user) => {
       if (user) {
         const groupId = to[0].split('@')[0];
-        return getOpenRequestForPost({ groupId })
+        return getOpenRequestForPost({ groupId, userId: user.id })
           .then((requestForPost) => {
             if (requestForPost) {
               const userId = user.id;
