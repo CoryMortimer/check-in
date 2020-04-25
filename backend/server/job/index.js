@@ -76,12 +76,13 @@ const getUsersInGroup = (requestsWithUsers) => {
   return Promise.all(promises).then(() => uniqueGroupIds);
 };
 
-const createEmailPayload = (to, html, { userId, requestForPostId }) => {
+const createEmailPayload = (to, replyTo, html, { userId, requestForPostId }) => {
   return {
     to,
     from: process.env.SENDGRID_FROM_EMAIL,
     subject: 'Time to Check In',
     html,
+    replyTo,
     custom_args: {
       userId,
       requestForPostId,
@@ -95,11 +96,11 @@ const createEmails = (requestsWithUsers) => {
       return requestsWithUsers.map((requestsWithUser) => {
         return createEmailPayload(
           requestsWithUser.email,
+          `${requestsWithUser.group_id}@${process.env.SENDGRID_REPLY_TO_DOMAIN}`,
           checkInTemplate(
             requestsWithUser.group_name,
             usersInGroups[requestsWithUser.group_id].join(', '),
-            requestsWithUser.time_close.toString(),
-            `${requestsWithUser.group_id}@${process.env.SENDGRID_REPLY_TO_DOMAIN}`,
+            requestsWithUser.time_close.toUTCString(),
           ),
           { userId: requestsWithUser.user_id, requestForPostId: requestsWithUser.request_for_post_id }
         )

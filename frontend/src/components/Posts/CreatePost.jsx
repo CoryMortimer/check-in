@@ -35,7 +35,7 @@ const CreatePost = ({ groupId }) => {
           {requestForPost && (
             <>
               <Typography variant="h6">Posting is {isPostingOpen ? 'open' : 'closed' }</Typography>
-              <Typography variant="body1">{openTime.toString()} to {closeTime.toString()}</Typography>
+              <Typography variant="body1">{openTime.toLocaleString()} to {closeTime.toLocaleString()}</Typography>
             </>
           )}
         </Grid>

@@ -1,4 +1,4 @@
-const checkInTemplate = (groupName, listOfEmails, closingDate, replyToDomain) => {
+const checkInTemplate = (groupName, listOfEmails, closingDate) => {
   return `<!doctype html>
   <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -120,7 +120,7 @@ const checkInTemplate = (groupName, listOfEmails, closingDate, replyToDomain) =>
                     </tr>
                     <tr>
                       <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                        <div style="font-family:helvetica;font-size:20px;line-height:1;text-align:left;color:#000000;">You are invited to join a group newsletter! Simply send an email to ${replyToDomain} to let the group know how you have been doing this past month.</div>
+                        <div style="font-family:helvetica;font-size:20px;line-height:1;text-align:left;color:#000000;">You are invited to join a group newsletter! Simply reply to this email to let the group know how you have been doing this past month.</div>
                       </td>
                     </tr>
                     <tr>
