@@ -1,8 +1,8 @@
 {
-  "azureFunctions.deploySubpath": "backend",
-  "azureFunctions.postDeployTask": "yarn",
+  "azureFunctions.deploySubpath": "timerfunction",
+  "azureFunctions.postDeployTask": "npm install",
   "azureFunctions.projectLanguage": "JavaScript",
-  "azureFunctions.projectRuntime": "~3",
+  "azureFunctions.projectRuntime": "~2",
   "debug.internalConsoleOptions": "neverOpen",
   "azureFunctions.preDeployTask": "npm prune"
 }
