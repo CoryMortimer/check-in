@@ -98,10 +98,17 @@ UPDATE request_for_posts SET time_close = now();
 
 **Note**: In production, there is an Azure function set up to hit the endpoints every morning to initite the sending of the emails.
 
-## Database Relationship Diagram
+## Database relationship diagram
 Note that some of the fields in the tables are not currently used.
 
-![Database Relationship Diagram](./database.png)
+![Database Relationship Diagram](./images/database.png)
+
+## Product images
+![Groups page](./images/groups.png)
+![Add new group page](./images/add_new_group.png)
+![Group page](./images/group.png)
+![Check in email](./images/check_in_email.png)
+![Newsletter email](./images/newsletter.png)
 
 ## License
 
