@@ -12,7 +12,7 @@ const createRequestForPost = ({ groupId, timeOpen, timeClose }) => {
 
 const getOpenRequestForPost = ({ groupId, userId }) => {
   return pool.query(
-    'select * from request_for_posts as r inner join users_groups as ug on r.group_id=ug.group_id where r.time_open <= now() and r.time_close >= now() and r.group_id=$1 and ug.user_id=$2',
+    'select r.id, r.group_id, r.time_open, r.time_close, r.sent_newsletter, r.archived, r.created_at from request_for_posts as r inner join users_groups as ug on r.group_id=ug.group_id where r.time_open <= now() and r.time_close >= now() and r.group_id=$1 and ug.user_id=$2',
     [groupId, userId]
   )
     .then((results) => results.rows[0]);

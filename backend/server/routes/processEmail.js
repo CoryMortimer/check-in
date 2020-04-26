@@ -11,11 +11,11 @@ router.post('/', handleRejection((req, res) => {
   return getUserByEmail({ email: from })
     .then((user) => {
       if (user) {
+        const userId = user.id;
         const groupId = to[0].split('@')[0];
-        return getOpenRequestForPost({ groupId, userId: user.id })
+        return getOpenRequestForPost({ groupId, userId })
           .then((requestForPost) => {
             if (requestForPost) {
-              const userId = user.id;
               const requestForPostId = requestForPost.id;
               return getPost({ userId, requestForPostId })
                 .then((post) => {
