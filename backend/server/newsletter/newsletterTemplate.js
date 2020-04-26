@@ -159,7 +159,7 @@ const generateBodyFromMessages = (emailsAndMessages) => {
       </tr>
       <tr>
         <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-          <div style="font-family:helvetica;font-size:20px;line-height:1;text-align:left;color:#000000;">${message}</div>
+          <div style="font-family:helvetica;font-size:20px;line-height:1;text-align:left;color:#000000;">${message.replace(/\r?\n/g, '<br />')}</div>
         </td>
       </tr>
     `;

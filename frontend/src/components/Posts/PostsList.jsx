@@ -27,6 +27,7 @@ const PostsList = ({ groupId }) => {
           <ListItemText
             primary={post.email}
             secondary={post.message}
+            secondaryTypographyProps={{style: {whiteSpace: 'pre'}}}
           />
         </ListItem>
       ))}
