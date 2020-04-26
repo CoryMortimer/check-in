@@ -1,5 +1,5 @@
 # Check In app for Twilio Hackathon April 2020
-
+Check out the live instance at https://checkin.corymortimer.com/
 ## About
 
 This is an app developed for the [Twilio Hackathon on DEV](https://dev.to/devteam/announcing-the-twilio-hackathon-on-dev-2lh8). It has been created and developed throughout the month of April.
