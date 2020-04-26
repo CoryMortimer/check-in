@@ -104,11 +104,11 @@ Note that some of the fields in the tables are not currently used.
 ![Database Relationship Diagram](./images/database.png)
 
 ## Product images
-![Groups page](./images/groups.png)
-![Add new group page](./images/add_new_group.png)
-![Group page](./images/group.png)
-![Check in email](./images/check_in_email.png)
-![Newsletter email](./images/newsletter.png)
+<img src="images/groups.png" style="width: 49%;"/>
+<img src="images/add_new_group.png" style="width: 49%;"/>
+<img src="images/group.png" style="width: 49%; display: block; padding-bottom: 8px;"/>
+<img src="images/check_in_email.png" style="width: 49%;"/>
+<img src="images/newsletter.png" style="width: 49%;"/>
 
 ## License
 
