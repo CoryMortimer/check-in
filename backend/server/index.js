@@ -32,6 +32,7 @@ app.use(cookieSession({
   secret: SESSION_SECRET,
   domain: COOKIE_DOMAIN,
   secure: IS_SECURE_COOKIE === 'true',
+  maxAge: 24 * 60 * 60 * 1000, // 24 hours
 }));
 
 app.use('/api/', indexRouter);

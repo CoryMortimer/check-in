@@ -5,6 +5,7 @@ const authenticationRequired = (req, res, next) => {
     return getUserByAuthId({ userAuthId: req.session.userId })
       .then((user) => {
         if (user) {
+          req.session.nowInMinutes = Math.floor(Date.now() / 60e3);
           req.authenticatedUser = user;
           return next();
         } else {
