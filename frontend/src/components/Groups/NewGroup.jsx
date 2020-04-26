@@ -17,6 +17,7 @@ const NewGroup = () => {
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <Typography variant="h4">New Group</Typography>
+        <Typography variant="subtitle">No need to add yourself. You will be added to this group automatically.</Typography>
       </Grid>
       <Grid item xs={12}>
         <TextField

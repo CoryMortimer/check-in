@@ -58,7 +58,7 @@ CREATE TABLE posts (
   created_at timestamp default current_timestamp,
   unique (user_id, request_for_post_id)
 );
-CREATE UNIQUE INDEX request_for_post_id_idx ON posts (request_for_post_id);
+CREATE INDEX request_for_post_id_idx ON posts (request_for_post_id);
 CREATE INDEX user_id_for_posts_idx ON posts (user_id);
 
 CREATE TABLE sent_emails (

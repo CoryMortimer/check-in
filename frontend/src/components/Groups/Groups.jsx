@@ -27,13 +27,13 @@ const Groups = () => {
         <Typography variant="h4">Groups</Typography>
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="h5">Posting an update is open</Typography>
+        <Typography variant="h5">You can now post an update for the following groups</Typography>
       </Grid>
       <Grid item xs={12}>
         <RequestForPostsList />
       </Grid>
       <Grid item xs={12}>
-        <Typography variant="h5">Others</Typography>
+        <Typography variant="h5">You'll have to wait a bit to post an update for these groups</Typography>
       </Grid>
       <Grid item xs={12}>
         <GroupsList />
